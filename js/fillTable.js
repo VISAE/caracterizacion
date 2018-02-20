@@ -13,6 +13,7 @@ function fillTable() {
 	var rows = XLSX.utils.decode_range(sheet["!ref"]).e.r;
 	var cols = XLSX.utils.decode_range(sheet["!ref"]).e.c;
 	var strRows = '';
+	var risk;
 	for (var i = 3; i <= rows; i++) {
 		strRows += "<tr>";
         strRows += "<td>"+(i-2)+"</td>"; // Nro.
@@ -30,20 +31,26 @@ function fillTable() {
 		strRows += "<td></td>"; // NOVEDAD
 		strRows += "<td></td>"; // PARTICIPACION INDUCCION
         strRows += "<td></td>"; // PARTICIPACION INMERSION CAMPUS VIRTUAL
-        var rFSD = validaRiesgos('FSD', i+1);
-		strRows += "<td"+addComment(rFSD, 'P'+(i+3))+">"+rFSD[0]+"</td>"; // Factor Socio-Demográfico
-		var rFPS = validaRiesgos('FPS', i+1);
-        strRows += "<td"+addComment(rFPS, 'Q'+(i+3))+">"+rFPS[0]+"</td>"; // Factor Psicosocial
-        var rFAA = validaRiesgos('FAA', i+1);
-        strRows += "<td"+addComment(rFAA, 'R'+(i+3))+">"+rFAA[0]+"</td>"; // Factor Académico Antecedentes
+        risk = validaRiesgos('FSD', i+1, 0);
+		strRows += "<td"+addComment(risk, 'P'+(i+3))+">"+risk[0]+"</td>"; // Factor Socio-Demográfico
+		risk = validaRiesgos('FPS', i+1, 0);
+        strRows += "<td"+addComment(risk, 'Q'+(i+3))+">"+risk[0]+"</td>"; // Factor Psicosocial
+        risk = validaRiesgos('FAA', i+1, 0);
+        strRows += "<td"+addComment(risk, 'R'+(i+3))+">"+risk[0]+"</td>"; // Factor Académico Antecedentes
+        /*risk = validaRiesgos('FSE', i+1, 0);
+        strRows += "<td"+addComment(risk, 'S'+(i+3))+">"+risk[0]+"</td>"; // Factor Socio-Económico*/
         strRows += "<td></td>"; // Factor Socio-Económico
         strRows += "<td></td>"; // Factor Académico por apropiacion al modelo
         strRows += "<td></td>"; // Factor Institucional
         strRows += "<td></td>"; // Factores Externos
-        strRows += "<td></td>"; // COMPETENCIAS DIGITALES BASICAS
-        strRows += "<td></td>"; // COMPETENCIAS CUANTITATIVAS
-        strRows += "<td></td>"; // COMPETENCIAS LECTO-ESCRITORA
-        strRows += "<td></td>"; // COMPETENCIAS DE INGLES
+        risk = validaRiesgos('CDB', i+1, 1);
+        strRows += "<td"+addComment(risk, 'W'+(i+3))+">"+risk[0]+"</td>"; // COMPETENCIAS DIGITALES BASICAS
+        risk = validaRiesgos('CC', i+1, 1);
+        strRows += "<td"+addComment(risk, 'X'+(i+3))+">"+risk[0]+"</td>"; // COMPETENCIAS CUANTITATIVAS
+        risk = validaRiesgos('CLE', i+1, 1);
+        strRows += "<td"+addComment(risk, 'Y'+(i+3))+">"+risk[0]+"</td>"; // COMPETENCIAS LECTO-ESCRITORA
+        risk = validaRiesgos('CI', i+1, 1);
+        strRows += "<td"+addComment(risk, 'Z'+(i+3))+">"+risk[0]+"</td>"; // COMPETENCIAS DE INGLES
         strRows += "<td></td>"; // MEDIO DE CONTACTO
         strRows += "<td></td>"; // ACCIONES REALIZADAS SEGÚN RUTA DE PAPC
         strRows += "<td></td>"; // RESULTADOS ACCIONES DE ACOMPAÑAMIENTO
@@ -122,6 +129,31 @@ function riesgoFAA(row, sheet, cells, na) {
     cells.push(sheet['BN'+row].v.toString().toLowerCase() == 'no'?'Primer opción de estudio:\n\tNo':null);
 }
 
+// Factor Socio-Económico
+function riesgoFSE(row, sheet, cells, na) {
+    cells.push(na.indexOf(sheet['BV'+row].v.toString().toLowerCase()) < 0?'Dependencia Económica:\n\t'+sheet['BV'+row].v:null);
+}
+
+// COMPETENCIAS DIGITALES BASICAS
+function riesgoCDB(row, sheet, cells, na) {
+    cells.push(sheet['AL'+row].v.toString().toLowerCase() == 'insuficiente'?'Nivel:\n\tInsuficiente':null);
+}
+
+// COMPETENCIAS CUANTITATIVAS
+function riesgoCC(row, sheet, cells, na) {
+    cells.push(sheet['AJ'+row].v.toString().toLowerCase() == 'insuficiente'?'Nivel:\n\tInsuficiente':null);
+}
+
+// COMPETENCIAS LECTO-ESCRITORA
+function riesgoCLE(row, sheet, cells, na) {
+    cells.push(sheet['AH'+row].v.toString().toLowerCase() == 'insuficiente'?'Nivel:\n\tInsuficiente':null);
+}
+
+// COMPETENCIAS DE INGLES
+function riesgoCI(row, sheet, cells, na) {
+    cells.push(sheet['AN'+row].v.toString().toLowerCase() == 'insuficiente'?'Nivel:\n\tInsuficiente':null);
+}
+
 function prepareComment(cells) {
     var msg = '';
     cells.forEach(function(e){
@@ -130,8 +162,8 @@ function prepareComment(cells) {
     return msg;
 }
 
-function validaRiesgos(factor, row) {
-	var sheet = wb.Sheets[wb.SheetNames[0]];
+function validaRiesgos(factor, row, sheet) {
+	var sheet = wb.Sheets[wb.SheetNames[sheet]];
     var na = ['no aplica', '#n/a', 'no pertenece', 'ninguna'];
     var cells = new Array;
     switch (factor) {
@@ -150,19 +182,30 @@ function validaRiesgos(factor, row) {
             var msg = prepareComment(cells);
             return msg.length > 0?["Riesgo por antecedentes académicos",msg]:["Sin Riesgo por antecedentes académicos"];
             break;
+        case 'FSE':
+            riesgoFSE(row, sheet, cells, na);
+            var msg = prepareComment(cells);
+            return msg.length > 0?["Riesgo socioeconómico",msg]:["Sin riesgo socioeconómico"];
+            break;
+        case 'CDB':
+            riesgoCDB(row, sheet, cells, na);
+            var msg = prepareComment(cells);
+            return msg.length > 0?["Riesgo en Competencias Digitales Basicas",msg]:["Sin riesgo en Competencias Digitales Basicas"];
+            break;
+        case 'CC':
+            riesgoCC(row, sheet, cells, na);
+            var msg = prepareComment(cells);
+            return msg.length > 0?["Riesgo en Competencias Cuantitativas",msg]:["Sin riesgo en Competencias Cuantitativas"];
+            break;
+        case 'CLE':
+            riesgoCLE(row, sheet, cells, na);
+            var msg = prepareComment(cells);
+            return msg.length > 0?["Riesgo en Competencias Lecto-Escritora",msg]:["Sin riesgo en Competencias Lecto-Escritora"];
+            break;
+        case 'CI':
+            riesgoCI(row, sheet, cells, na);
+            var msg = prepareComment(cells);
+            return msg.length > 0?["Riesgo en Competencias de Ingles",msg]:["Sin riesgo en Competencias de Ingles"];
+            break;
     }
-}
-
-
-
-function riesgoFSE(row) {
-	var sheet = wb.Sheets[wb.SheetNames[0]];
-    var riesgos = new Array;
-    riesgos.push(sheet['AO'+row].v == 'Menos de un salario mínimo'?'Ingresos Mensuales:\n\tMenos de un salario mínimo':null);
-    riesgos.push(sheet['AE'+row].v == 'Desempleado'?'Situación Laboral:\n\tDesempleado':null);
-    msgFSE = '';
-    riesgos.forEach(function(e){
-		msgFSE += (e!=null?'* '+e+'\n':'');
-	});
-	return msgFSE.length > 0?["Riesgo socioeconomico", msgFSE]:["Sin riesgo socioeconomico"];	
 }
