@@ -9,20 +9,25 @@
   	<script src="js/bootstrap.min.js"></script>
   	<script type="text/javascript" src="js/xlsx.full.min.js"></script>
   	<script type="text/javascript" src="js/FileSaver.min.js"></script>
-  	<script type="text/javascript" src="js/exportData.js"></script>  	
+    <script type="text/javascript" src="js/spin.js"></script>
+  	<script type="text/javascript" src="js/exportData.js"></script>
   	<script type="text/javascript" src="js/loadData.js"></script>
   	<script type="text/javascript" src="js/fillTable.js"></script>
   	<script type="text/javascript" src="js/tableHeadFixer.js"></script>
-  	<script>
-		$(document).ready(function() {
-			$("#matriz").tableHeadFixer();
-		});
-	</script>
 </head>
 <body>
 <div id="wrapper">
-	<input type="file" id="input-excel">
-	<button id="button-a">Exportar</button>
+	<input type="file" id="input-excel" class="label-info" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" >
+	<button id="button-a" class="btn-primary">Exportar</button>
+
+    <!--Spinner-->
+    <div id="loading">
+        <div id="loadingcont">
+            <p id="loadingspinr">
+            </p>
+        </div>
+    </div>
+
 	<label id="msg"></label>
 	<div id="parent" class="table-responsive">
 	<!--<table class="table table-hover" id="matriz">
@@ -171,70 +176,7 @@
                 </tr>
             </thead>
             <tbody id="tableBody">
-                <tr>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                    <td class="tg-031e"></td>
-                </tr>
+
             </tbody>
         </table>
 	</div>

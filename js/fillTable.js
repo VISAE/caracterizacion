@@ -1,5 +1,5 @@
 function manageUndefined(cell) {
-	var sheet = wb.Sheets[wb.SheetNames[0]];
+	var sheet = wb.Sheets['SocioDemograficos'];
 	try {
 		return sheet[cell].v;
 	} catch(e) {
@@ -163,7 +163,7 @@ function prepareComment(cells) {
 }
 
 function validaRiesgos(factor, row, sheet) {
-	var sheet = wb.Sheets[wb.SheetNames[sheet]];
+	var sheet = wb.Sheets[sheet==0?'SocioDemograficos':'competencias'];
     var na = ['no aplica', '#n/a', 'no pertenece', 'ninguna'];
     var cells = new Array;
     switch (factor) {
