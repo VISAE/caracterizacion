@@ -35,10 +35,10 @@ $(document).ready(function (e) {
 function fillWithComments() {
     var sheet = wb.Sheets[wb.SheetNames[0]];
     for (var property in comments) {
-        // console.log(property);
+        // console.log(comments[property]);
         if (comments.hasOwnProperty(property)) {
             sheet[property].c = [];
-            sheet[property].c.push(comments[property]);
+            sheet[property].c.push(comments[property]);            
         }
     }
 }
