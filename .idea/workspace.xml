@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48c805c9-bb2e-48f6-9f4f-1f8c43d4d0f0" name="Default" comment="spin.js library and spinner animation">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/js/xlsx.core.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/css/tableexport.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/js/FileSaver.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/js/tableexport.js" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
       <change beforePath="$PROJECT_DIR$/js/exportData.js" afterPath="$PROJECT_DIR$/js/exportData.js" />
       <change beforePath="$PROJECT_DIR$/js/fillTable.js" afterPath="$PROJECT_DIR$/js/fillTable.js" />
-      <change beforePath="$PROJECT_DIR$/js/xlsx.full.min.js" afterPath="$PROJECT_DIR$/js/xlsx.full.min.js" />
+      <change beforePath="$PROJECT_DIR$/js/loadData.js" afterPath="$PROJECT_DIR$/js/loadData.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,21 +20,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="fillTable.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="fillTable.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/fillTable.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="248" column="4" lean-forward="false" selection-start-line="248" selection-start-column="4" selection-end-line="248" selection-end-column="4" />
+            <state relative-caret-position="1760">
+              <caret line="88" column="36" lean-forward="true" selection-start-line="88" selection-start-column="36" selection-end-line="88" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="loadData.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/loadData.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="511">
+              <caret line="26" column="47" lean-forward="false" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="exportData.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/exportData.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="40">
+              <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="120" selection-end-column="95" />
+            <state relative-caret-position="180">
+              <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -47,6 +69,9 @@
       <find>&lt;td class=&quot;tg-yw4l&quot;</find>
       <find>yw4l</find>
       <find>gray</find>
+      <find>rowspan=&quot;2&quot;</find>
+      <find>Puntaje</find>
+      <find>Puntaje:</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -59,11 +84,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/.htaccess" />
-        <option value="$PROJECT_DIR$/js/loadData.js" />
         <option value="$PROJECT_DIR$/css/style.css" />
-        <option value="$PROJECT_DIR$/js/exportData.js" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/js/fillTable.js" />
+        <option value="$PROJECT_DIR$/js/loadData.js" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/js/exportData.js" />
       </list>
     </option>
   </component>
@@ -133,9 +158,9 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp_5\htdocs\caracterizacion" />
       <recent name="C:\xampp_5\htdocs\caracterizacion\js" />
       <recent name="C:\xampp_5\htdocs\caracterizacion\css" />
+      <recent name="C:\xampp_5\htdocs\caracterizacion" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -168,7 +193,7 @@
       <workItem from="1519163848967" duration="311000" />
       <workItem from="1519652065561" duration="25233000" />
       <workItem from="1519737471516" duration="704000" />
-      <workItem from="1537306466555" duration="26944000" />
+      <workItem from="1537306466555" duration="66316000" />
     </task>
     <task id="LOCAL-00001" summary="New Sheet Structure">
       <created>1519140158106</created>
@@ -209,7 +234,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74493000" />
+    <option name="totallyTimeSpent" value="113865000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -467,34 +492,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/exportData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="19" column="14" lean-forward="false" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/loadData.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="35" column="21" lean-forward="false" selection-start-line="33" selection-start-column="12" selection-end-line="35" selection-end-column="21" />
+        <state relative-caret-position="511">
+          <caret line="26" column="47" lean-forward="false" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
+    <entry file="file://$PROJECT_DIR$/js/exportData.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="120" selection-end-column="95" />
+        <state relative-caret-position="40">
+          <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/fillTable.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="248" column="4" lean-forward="false" selection-start-line="248" selection-start-column="4" selection-end-line="248" selection-end-column="4" />
+        <state relative-caret-position="1760">
+          <caret line="88" column="36" lean-forward="true" selection-start-line="88" selection-start-column="36" selection-end-line="88" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="50" />
           <folding />
         </state>
       </provider>

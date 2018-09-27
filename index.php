@@ -1,24 +1,32 @@
 <html>
 <head>
 	<title></title>
-	<meta charset="utf-8">
-  	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">
+    <!--<meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">-->
   	<link rel="stylesheet" href="css/bootstrap.min.css">
   	<link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/tableexport.css">
   	<script src="js/jquery-3.3.1.min.js"></script>
   	<script src="js/bootstrap.min.js"></script>
-  	<script type="text/javascript" src="js/xlsx.full.min.js"></script>
-  	<script type="text/javascript" src="js/FileSaver.min.js"></script>
+  	<!--<script type="text/javascript" src="js/xlsx.full.min.js"></script>
+  	<script type="text/javascript" src="js/FileSaver.min.js"></script>-->
     <script type="text/javascript" src="js/spin.js"></script>
-  	<script type="text/javascript" src="js/exportData.js"></script>
+    <script type="text/javascript" src="js/tableHeadFixer.js"></script>
+    <script type="text/javascript" src="js/xlsx.core.min.js"></script>
+    <script type="text/javascript" src="js/FileSaver.js"></script>
+    <script type="text/javascript" src="js/tableexport.js"></script>
   	<script type="text/javascript" src="js/loadData.js"></script>
-  	<script type="text/javascript" src="js/fillTable.js"></script>
-  	<script type="text/javascript" src="js/tableHeadFixer.js"></script>
+    <script type="text/javascript" src="js/fillTable.js"></script>
+    <script type="text/javascript" src="js/exportData.js"></script>
+
 </head>
 <body>
 <div id="wrapper">
 	<input type="file" id="input-excel" class="label-info" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" >
-	<button id="button-a" class="btn-primary">Exportar</button>
+    <input type="button" onclick="tableToExcel('matriz', 'Export HTML Table to Excel')" value="Export to Excel" />
+
+    <!--	<button id="button-a" class="btn-primary">Exportar</button>-->
 
     <!--Spinner-->
     <div id="loading">
@@ -30,56 +38,6 @@
 
 	<label id="msg"></label>
 	<div id="parent" class="table-responsive">
-	<!--<table class="table table-hover" id="matriz">
-		<thead>
-			<tr>
-				<th>IDENTIFICACION DEL ESTUDIANTE</th>
-				<th>NOMBRE COMPLETO</th>
-				<th>CENTRO</th>
-				<th>ZONA</th>
-				<th>PROGRAMA</th>
-				<th>ESCUELA</th>
-				<th>EMAIL </th>
-				<th>TELEFONO</th>
-				<th>EDAD</th>
-				<th>ASIGNACION</th>
-				<th>CONVENIO</th>
-				<th>NOVEDAD</th>
-				<th>GENERAL</th>
-				<th>CAMPUS VIRTUAL</th>
-				<th>Riesgo </th>
-				<th>Acciones realizadas según ruta de PAPC</th>
-				<th>RESULTADOS</th>
-				<th>Riesgo</th>
-				<th>Acciones realizadas según ruta de PAPC</th>
-				<th>RESULTADOS</th>
-				<th>Riesgo</th>
-				<th>Acciones realizadas según ruta de PAPC</th>
-				<th>RESULTADOS</th>
-				<th>Riesgo</th>
-				<th>Acciones realizadas según ruta de PAPC</th>
-				<th>RESULTADOS</th>
-				<th>Riesgo</th>
-				<th>Acciones realizadas según ruta de PAPC</th>
-				<th>RESULTADOS</th>
-				<th>Riesgo</th>
-				<th>Acciones realizadas según ruta de PAPC</th>
-				<th>RESULTADOS</th>
-				<th>NIVEL DE RIESGO POR FACTORES</th>
-				<th>GRUPO COLABORATIVO</th>
-				<th>SITUACION DE RIESGO</th>
-				<th>ACCIONES REALIZADAS</th>
-				<th>RESULTADOS</th>
-				<th>No. Cursos </th>
-				<th>SITUACION DE RIESGO</th>
-				<th>ACCIONES REALIZADAS</th>
-				<th>RESULTADOS</th>
-			</tr>
-		</thead>
-		<tbody id="tableBody">
-
-		</tbody>
-	</table>-->
         <table class="table table-bordered table-hover" id="matriz">
             <thead>
                 <tr>
@@ -105,18 +63,18 @@
                     <th class="text-center" bgcolor="#666666">TELEFONO</th>
                     <th class="text-center" bgcolor="#666666">ASIGNACION</th>
                     <th class="text-center" bgcolor="#666666">TIPO</th>
-                    <th class="text-center" rowspan="2" bgcolor="#bf9000">Factor Socio-Demográfico</th>
-                    <th class="text-center" rowspan="2" bgcolor="#bf9000">Factor Psicosocial</th>
-                    <th class="text-center" rowspan="2" bgcolor="#bf9000">Factor Académico Antecedentes</th>
-                    <th class="text-center" rowspan="2" bgcolor="#bf9000">Factor Socio-Económico</th>
-                    <th class="text-center" rowspan="2" bgcolor="#bf9000">Factores Internos (Indagar sobre las dificultades presentadas en la modalidad)</th>
-                    <th class="text-center" rowspan="2" bgcolor="#bf9000">Factores Externos</th>
-                    <th class="text-center" rowspan="2" bgcolor="#bf9000">ACCIONES DE INTERVENCION SEGÚN FACTORES DE RIESGO</th>
-                    <th class="text-center" rowspan="2" bgcolor="#ff9900">Nivel de Riesgo Factores</th>
+                    <th class="text-center" bgcolor="#bf9000">Factor Socio-Demográfico</th>
+                    <th class="text-center" bgcolor="#bf9000">Factor Psicosocial</th>
+                    <th class="text-center" bgcolor="#bf9000">Factor Académico Antecedentes</th>
+                    <th class="text-center" bgcolor="#bf9000">Factor Socio-Económico</th>
+                    <th class="text-center" bgcolor="#bf9000">Factores Externos</th>
+                    <th class="text-center" bgcolor="#bf9000">Factores Internos (Indagar sobre las dificultades presentadas en la modalidad)</th>
+                    <th class="text-center" bgcolor="#bf9000">ACCIONES DE INTERVENCION SEGÚN FACTORES DE RIESGO</th>
+                    <th class="text-center" bgcolor="#ff9900">Nivel de Riesgo Factores</th>
                     <th class="text-center" bgcolor="#f1c232">COMPETENCIAS DIGITALES BASICAS</th>
                     <th class="text-center" bgcolor="#f1c232">COMPETENCIAS CUANTITATIVAS</th>
                     <th class="text-center" bgcolor="#f1c232">COMPETENCIAS LECTO-ESCRITORA</th>
-                    <th class="text-center" bgcolor="#f1c232">COMPETENCIAS DE INGLES</th>
+                    <th class="text-center" bgcolor="#f1c232">COMPETENCIAS INGLES</th>
                     <th class="text-center" bgcolor="#f1c232">ACCIONES DE INTERVENCION SEGÚN RIESGOS COMPETENCIAS</th>
                     <th class="text-center" bgcolor="#ff9900">Nivel de Riesgo Competencias</th>
                 </tr>

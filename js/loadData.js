@@ -25,7 +25,7 @@ $(document).ready(function(e) {
             reader.readAsArrayBuffer(e.target.files[0]);
             reader.onload = function (e) {
                 var data = new Uint8Array(reader.result);
-                wb = XLSX.read(data, {type: 'array'});
+                wb = XLSX.read(data, {type: 'array'}, {codepage: 65001});
                 fillTable();
             }
         }catch (err) {
