@@ -108,7 +108,7 @@ function verificaDiligenciados(fields) {
 function calculaPuntaje(cell, cells, ranges) {
     var fields = verificaDiligenciados([cell]);
     if(Object.values(fields).join('') == '')
-        cells.push('Aspecto no diligenciado');
+        cells.push('Aspecto no diligenciado &diams; ');
     else {
         var params = {'alto': [...range(ranges[0], ranges[1])],'medio':[...range(ranges[2], ranges[3])],'bajo':[...range(ranges[4], ranges[5])]};
         Object.keys(fields).forEach(function (key) {
@@ -116,7 +116,7 @@ function calculaPuntaje(cell, cells, ranges) {
                 case (cell):
                     Object.keys(params).forEach(function(keyp) {
                         if(params[keyp].includes(parseInt(fields[key])))
-                            cells.push('Riesgo:\n\t'+keyp);
+                            cells.push('Riesgo:\n\t'+keyp+' &diams; ');
                     });
                     break;
             }
@@ -301,7 +301,7 @@ function validaRiesgos(factor, row, sheet) {
         case 'FPS':
             riesgoFPS(row, sheet, cells, na);
             var msg = prepareComment(cells);
-            return msg.length > 0?["",msg + '<br>Puntaje: '+ manageUndefined('EB'+row)]:["Sin riesgo por situaciones personales"];
+            return msg.length > 0?["",msg + 'Puntaje: '+ manageUndefined('EB'+row)]:["Sin riesgo por situaciones personales"];
             break;
         case 'FAA':
             riesgoFAA(row, sheet, cells, na);
@@ -326,22 +326,22 @@ function validaRiesgos(factor, row, sheet) {
         case 'CDB':
             riesgoCDB(row, sheet, cells, na);
             var msg = prepareComment(cells);
-            return msg.length > 0?["",msg + '<br>Puntaje: '+ manageUndefined('EC'+row)]:["Sin riesgo en Competencias Digitales Basicas"];
+            return msg.length > 0?["",msg + 'Puntaje: '+ manageUndefined('EC'+row)]:["Sin riesgo en Competencias Digitales Basicas"];
             break;
         case 'CC':
             riesgoCC(row, sheet, cells, na);
             var msg = prepareComment(cells);
-            return msg.length > 0?["",msg + '<br>Puntaje: '+ manageUndefined('EE'+row)]:["Sin riesgo en Competencias Cuantitativas"];
+            return msg.length > 0?["",msg + 'Puntaje: '+ manageUndefined('EE'+row)]:["Sin riesgo en Competencias Cuantitativas"];
             break;
         case 'CLE':
             riesgoCLE(row, sheet, cells, na);
             var msg = prepareComment(cells);
-            return msg.length > 0?["",msg + '<br>Puntaje: '+ manageUndefined('ED'+row)]:["Sin riesgo en Competencias Lecto-Escritora"];
+            return msg.length > 0?["",msg + 'Puntaje: '+ manageUndefined('ED'+row)]:["Sin riesgo en Competencias Lecto-Escritora"];
             break;
         case 'CI':
             riesgoCI(row, sheet, cells, na);
             var msg = prepareComment(cells);
-            return msg.length > 0?["",msg + '<br>Puntaje: '+ manageUndefined('EF'+row)]:["Sin riesgo en Competencias de Ingles"];
+            return msg.length > 0?["",msg + 'Puntaje: '+ manageUndefined('EF'+row)]:["Sin riesgo en Competencias de Ingles"];
             break;
     }
 }

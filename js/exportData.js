@@ -7,7 +7,9 @@ var tableToExcel = (function () {
         if (!table.nodeType) table = document.getElementById(table)
         var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
         var blob = new Blob([format(template, ctx)]);
-        var blobURL = window.URL.createObjectURL(blob);
+
+        window.saveAs(blob, 'reporte.xls');
+        /*var blobURL = window.URL.createObjectURL(blob);
 
         if (ifIE()) {
             csvData = table.innerHTML;
@@ -19,7 +21,7 @@ var tableToExcel = (function () {
             }
         }
         else
-            window.location.href = uri + base64(format(template, ctx))
+            window.location.href = uri + base64(format(template, ctx))*/
     }
 })()
 
